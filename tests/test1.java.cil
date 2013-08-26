@@ -1,0 +1,85 @@
+.assembly test1 {}
+
+.class public auto ansi sealed beforefieldinit Class1
+{
+
+    .method public hidebysig specialname rtspecialname instance void .ctor() cil managed
+    {
+        ret
+    }
+    
+    .field public static int32[] a
+    
+    .field public int32[] b
+    
+    .method public hidebysig instance int32 Test(int32 a, int32 b) cil managed
+    {
+        L_0000: ldc.i4 0x2
+        L_0001: ldarg.1
+        L_0002: mul
+        L_0003: ldc.i4 0x5
+        L_0004: ldarg.2
+        L_0005: mul
+        L_0006: add
+        L_0007: ret
+        L_0008: ret
+    }
+    
+}
+
+.class public auto ansi sealed beforefieldinit Class2
+{
+
+    .method public hidebysig specialname rtspecialname instance void .ctor() cil managed
+    {
+        ret
+    }
+    
+    .method public hidebysig static void main(class [mscorlib]System.String[] args) cil managed
+    {
+        .entrypoint
+        .locals init (
+            [0] class Class1 z
+        )
+        L_0000: newobj instance void Class1::.ctor()
+        L_0001: stloc.0
+        L_0002: ldloc.0
+        L_0003: ldc.i4 0x80
+        L_0004: newarr int32
+        L_0005: stfld int32[] Class1::b
+        L_0006: ldloc.0
+        L_0007: ldfld int32[] Class1::b
+        L_0008: ldc.i4 0x7
+        L_0009: ldc.i4 0x64
+        L_000a: stelem.i4
+        L_000b: ldloc.0
+        L_000c: ldfld int32[] Class1::b
+        L_000d: ldc.i4 0x6
+        L_000e: ldc.i4 0x5
+        L_000f: stelem.i4
+        L_0010: ldloc.0
+        L_0011: ldfld int32[] Class1::b
+        L_0012: ldc.i4 0x8
+        L_0013: ldc.i4 0x6
+        L_0014: stelem.i4
+        L_0015: ldloc.0
+        L_0016: ldfld int32[] Class1::b
+        L_0017: ldc.i4 0x7
+        L_0018: ldelem.i4
+        L_0019: call void [mscorlib]System.Console::WriteLine(int32)
+        L_001a: ldloc.0
+        L_001b: ldloc.0
+        L_001c: ldfld int32[] Class1::b
+        L_001d: ldc.i4 0x8
+        L_001e: ldelem.i4
+        L_001f: ldloc.0
+        L_0020: ldfld int32[] Class1::b
+        L_0021: ldc.i4 0x6
+        L_0022: ldelem.i4
+        L_0023: call instance int32 Class1::Test(int32, int32)
+        L_0024: call void [mscorlib]System.Console::WriteLine(int32)
+        L_0025: ret
+    }
+    
+}
+

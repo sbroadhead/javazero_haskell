@@ -1,0 +1,98 @@
+.assembly PQ {}
+
+.class public auto ansi sealed beforefieldinit PQ
+{
+
+    .method public hidebysig specialname rtspecialname instance void .ctor() cil managed
+    {
+        ret
+    }
+    
+    .field public int32 key
+    
+    .field public class PQ next
+    
+    .method public hidebysig instance void insert(int32 x) cil managed
+    {
+        L_0000: ldarg.0
+        L_0001: ldfld class PQ PQ::next
+        L_0002: ldnull
+        L_0003: ceq
+        L_0004: brfalse L_000c
+        L_0005: ldarg.0
+        L_0006: newobj instance void PQ::.ctor()
+        L_0007: stfld class PQ PQ::next
+        L_0008: ldarg.0
+        L_0009: ldarg.1
+        L_000a: stfld int32 PQ::key
+        L_000b: br L_001e
+        L_000c: ldarg.1
+        L_000d: ldarg.0
+        L_000e: ldfld int32 PQ::key
+        L_000f: cgt
+        L_0010: brfalse L_0016
+        L_0011: ldarg.0
+        L_0012: ldfld class PQ PQ::next
+        L_0013: ldarg.1
+        L_0014: call instance void PQ::insert(int32)
+        L_0015: br L_001e
+        L_0016: ldarg.0
+        L_0017: ldfld class PQ PQ::next
+        L_0018: ldarg.0
+        L_0019: ldfld int32 PQ::key
+        L_001a: call instance void PQ::insert(int32)
+        L_001b: ldarg.0
+        L_001c: ldarg.1
+        L_001d: stfld int32 PQ::key
+        L_001e: ret
+    }
+    
+    .method public hidebysig instance int32 min() cil managed
+    {
+        L_0000: ldarg.0
+        L_0001: ldfld int32 PQ::key
+        L_0002: ret
+        L_0003: ret
+    }
+    
+    .method public hidebysig static void main(class [mscorlib]System.String[] args) cil managed
+    {
+        .entrypoint
+        .locals init (
+            [0] class PQ l,
+            [1] int32 a
+        )
+        L_0000: ldc.i4 0x5
+        L_0001: ldc.i4 0x6
+        L_0002: add
+        L_0003: stloc.1
+        L_0004: newobj instance void PQ::.ctor()
+        L_0005: stloc.0
+        L_0006: ldloc.0
+        L_0007: ldc.i4 0x9
+        L_0008: call instance void PQ::insert(int32)
+        L_0009: ldloc.0
+        L_000a: ldc.i4 0x3
+        L_000b: call instance void PQ::insert(int32)
+        L_000c: ldloc.0
+        L_000d: ldc.i4 0x5
+        L_000e: call instance void PQ::insert(int32)
+        L_000f: br L_0016
+        L_0010: ldloc.0
+        L_0011: ldfld int32 PQ::key
+        L_0012: call void [mscorlib]System.Console::WriteLine(int32)
+        L_0013: ldloc.0
+        L_0014: ldfld class PQ PQ::next
+        L_0015: stloc.0
+        L_0016: ldloc.0
+        L_0017: ldfld class PQ PQ::next
+        L_0018: ldnull
+        L_0019: ceq
+        L_001a: ldc.i4.0
+        L_001b: ceq
+        L_001c: brtrue L_0010
+        L_001d: ret
+    }
+    
+}
+
